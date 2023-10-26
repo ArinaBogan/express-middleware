@@ -49,5 +49,25 @@ function createUser(name, surname, email, pwd) {
     return array;
 };
 
+function updateUser(id, name, surname, email, pwd) {
+    const filtered = array.filter((el) => el.id != id)
+    if (filtered.length == array.length) return 'id is not found'
+    const item = {
+        id: id,
+        name: name,
+        surname: surname,
+        email: email,
+        pwd: pwd
+    }
+    filtered.push(item);
+    return filtered;
+};
 
-module.exports = { getAllUsers, getUserById,createUser };
+function deleteUser(id) {
+    const filtered = array.filter((el) => el.id != id);
+    if (filtered.length == array.length)
+        throw new Error('id is not found');
+    return filtered;
+}
+
+module.exports = { getAllUsers, getUserById, createUser, updateUser, deleteUser };
