@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routeUser = require('./controller/user.controller');
+const Controller = require('./controller/user.controller');
 
 const app = express();
+const controller=new Controller();
 app.use(bodyParser.json());
 
-app.use('/user',routeUser);
+app.use('/user',controller.route);
 
 app.use((error, req, res, next) => {
     res.send(error.message);
