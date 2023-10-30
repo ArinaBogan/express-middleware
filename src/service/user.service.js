@@ -45,9 +45,6 @@ class Service {
 
     patchUser(id, clientObj) {
         const data = JSON.parse(fs.readFileSync(path));
-        // const oldDate = data.filter((el) => el.id == id);
-        // if (oldDate.length == 0) throw new Error('id is not found');
-        // const newData = { ...oldDate[0], ...clientObj };
         const oldDate = data.find((el) => el.id == id);
         const newData = { ...oldDate, ...clientObj };
         const filtered = data.filter((el) => el.id != id);
